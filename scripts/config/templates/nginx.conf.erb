@@ -66,9 +66,11 @@ http {
     }
   <% end %>
 
-  if ($http_x_forwarded_proto != "https") {
-    return 301 https://$host$request_uri;
-  }
+  <% if https_only %>
+    if ($http_x_forwarded_proto != "https") {
+      return 301 https://$host$request_uri;
+    }
+  <% end %>
 
   <% routes.each do |route, path| %>
     location ~ ^<%= route %>$ {
@@ -96,7 +98,7 @@ http {
       # can reuse variable set above
       proxy_pass $<%= hash['name'] %>;
       proxy_ssl_server_name on;
-      <% %w(http https).each do |scheme| %>
+      <% %w(http).each do |scheme| %>
       proxy_redirect <%= hash["redirect_#{scheme}"] %> <%= location %>;
       <% end %>
     }
