@@ -66,11 +66,9 @@ http {
     }
   <% end %>
 
-  <% if https_only %>
-    if ($http_x_forwarded_proto != "https") {
-      return 301 https://$host$request_uri;
-    }
-  <% end %>
+  if ($scheme = http) {
+    return 301 https://$host$request_uri;
+  }
 
   <% routes.each do |route, path| %>
     location ~ ^<%= route %>$ {
