@@ -44,6 +44,7 @@ http {
     keepalive_timeout 5;
     root <%= root %>;
     add_header X-Frame-Options "DENY";
+    server_tokens off;
 
   <% if error_page %>
     error_page 404 500 /<%= error_page %>;
