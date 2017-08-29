@@ -107,10 +107,10 @@ http {
     }
   <% end %>
 
-    location /wf {
-      proxy_pass 'https://sendgrid.net/wf';
-      proxy_set_header 'Host' 'nextgendev.clientlink.mckinsey.com';
-    }
+  location /wf {
+    proxy_pass 'https://sendgrid.net/wf';
+    proxy_set_header 'Host' 'nextgendev.clientlink.mckinsey.com';
+  }
 
   # fallback redirects named match
   <% redirects.each do |path, hash| %>
