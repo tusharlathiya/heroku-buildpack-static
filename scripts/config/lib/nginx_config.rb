@@ -25,7 +25,6 @@ class NginxConfig
     json["encoding"] ||= DEFAULT[:encoding]
 
     json["host_for_sendgrid"] = ENV["HOST_FOR_SENDGRID"]
-    json["proxy_for_sendgrid"] ||= nil
 
     index = 0
     json["proxies"] ||= {}
