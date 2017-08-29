@@ -26,6 +26,7 @@ class NginxConfig
 
     json["host_for_sendgrid"] = ENV["HOST_FOR_SENDGRID"]
 
+    print(json)
     index = 0
     json["proxies"] ||= {}
     json["proxies"].each do |loc, hash|
