@@ -101,16 +101,12 @@ http {
       # can reuse variable set above
       proxy_pass $<%= hash['name'] %>;
       proxy_ssl_server_name on;
+      proxy_set_header 'Host' 'nextgendev.clientlink.mckinsey.com';
       <% %w(https).each do |scheme| %>
       proxy_redirect <%= hash["redirect_#{scheme}"] %> <%= location %>;
       <% end %>
     }
   <% end %>
-
-  location /wf {
-    proxy_pass 'https://sendgrid.net/wf';
-    proxy_set_header 'Host' 'nextgendev.clientlink.mckinsey.com';
-  }
 
   # fallback redirects named match
   <% redirects.each do |path, hash| %>
