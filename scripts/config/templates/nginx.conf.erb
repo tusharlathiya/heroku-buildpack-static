@@ -101,8 +101,8 @@ http {
       # can reuse variable set above
       proxy_pass $<%= hash['name'] %>;
       proxy_ssl_server_name on;
-      <% if  location == '/wf' %>
-        proxy_set_header 'Host' 'nextgendev.clientlink.mckinsey.com';
+      <% if location == '/wf' %>
+        proxy_set_header 'Host' <%= host_for_sendgrid %>;
       <% end %>
       <% %w(https).each do |scheme| %>
       proxy_redirect <%= hash["redirect_#{scheme}"] %> <%= location %>;

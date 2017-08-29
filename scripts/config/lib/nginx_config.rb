@@ -24,6 +24,8 @@ class NginxConfig
     json["root"] ||= DEFAULT[:root]
     json["encoding"] ||= DEFAULT[:encoding]
 
+    json["host_for_sendgrid"] = ENV["HOST_FOR_SENDGRID"]
+
     index = 0
     json["proxies"] ||= {}
     json["proxies"].each do |loc, hash|
