@@ -102,7 +102,7 @@ http {
       proxy_pass $<%= hash['name'] %>;
       proxy_ssl_server_name on;
       # Adding header required for Sendgrid
-      <% if location == proxy_for_sendgrid %>
+      <% if location == sendgrid_identifier or if location == sendgrid_identifier_with_tracker %>
         proxy_set_header 'Host' <%= host_for_sendgrid %>;
       <% end %>
       <% %w(https).each do |scheme| %>
