@@ -109,11 +109,7 @@ http {
       <% if location == sendgrid_universal_identifier %>
           proxy_set_header 'Host' <%= host_for_sendgrid %>;
       <% end %>
-
-      <% if location == sendgrid_identifier_with_tracker %>
-        proxy_set_header 'Host' <%= host_for_sendgrid %><%= sendgrid_host_pathname_for_tracker%>;
-      <% end %>
-
+    
       <% %w(https).each do |scheme| %>
       proxy_redirect <%= hash["redirect_#{scheme}"] %> <%= location %>;
       <% end %>
